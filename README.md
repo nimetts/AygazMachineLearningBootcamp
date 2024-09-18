@@ -1,97 +1,104 @@
-# AygazMachineLearningBootcamp
-## Movie Sentiment Analysis
-Bu proje, Türkçe film yorumları veri setini kullanarak duygu analizi yapmayı amaçlamaktadır. Hem gözetimli hem de gözetimsiz öğrenme algoritmalarını kullanarak veriyi analiz ettim ve model performansını değerlendirdim.
+# Aygaz Machine Learning Bootcamp  
+**Kaggle Link:**  
+[My Bootcamp Notebook](https://www.kaggle.com/code/nimetseyrek/mybootcampnotebook)  
 
-## İçerik
-- Veri Yükleme ve Ön İşleme
-- Keşifsel Veri Analizi (EDA)
-- Gözetimli Öğrenme Modelleri
-- Gözetimsiz Öğrenme Modelleri
-- Model Seçimi ve Hiperparametre Optimizasyonu
-- Sonuçlar
-- Kurulum ve Kullanım
-## Veri Seti
-Proje, turkish_movie_sentiment_dataset.csv adlı bir CSV dosyasını kullanmaktadır. Bu veri seti, film isimleri, yorumlar ve puanlar içermektedir. Veri setindeki bazı boş değerler temizlenmiş ve puanlar normalleştirilmiştir.
+## Movie Sentiment Analysis  
+This project aims to perform sentiment analysis using a dataset of Turkish movie reviews. Both supervised and unsupervised learning algorithms were applied to analyze the data and evaluate model performance.
 
-## Veri Ön İşleme
-- Boş Değerlerin Temizlenmesi: Boş değerler içeren satırlar kaldırıldı.
-- Yorum Temizleme: Yorumlardaki fazlalık karakterler ve boşluklar temizlendi.
-- Puanların Normalleştirilmesi: Puanlar 0 ile 1 arasına ölçeklendirildi.
-- Duygu Etiketleme: Puanlara göre yorumlar 'pozitif', 'nötr', 'negatif' olarak etiketlendi.
-- Kategorik Verilerin Kodlanması: Film isimleri ve duygu etiketleri sayısal değerlere dönüştürüldü.
-## Keşifsel Veri Analizi (EDA)
-Veri setinin temel özelliklerini anlamak için:
+## Contents
+- Data Loading and Preprocessing
+- Exploratory Data Analysis (EDA)
+- Supervised Learning Models
+- Unsupervised Learning Models
+- Model Selection and Hyperparameter Optimization
+- Results
+- Setup and Usage Instructions
 
-- Duygu etiketlerinin dağılımı
-- Normalleştirilmiş puanların dağılımı
-- Duygu etiketleri ile normalleştirilmiş puanlar arasındaki ilişki
-Grafikler:
+## Dataset  
+The project uses a CSV file named `turkish_movie_sentiment_dataset.csv`, containing movie names, reviews, and ratings. Missing values were cleaned, and ratings were normalized.
 
-- Duygu etiketlerinin dağılımını gösteren çubuk grafik
-- Normalleştirilmiş puanların dağılımını gösteren histogram
-- Normalleştirilmiş puanlar ile duygu etiketleri arasındaki ilişkiyi gösteren dağılım grafiği
-## Gözetimli Öğrenme Modelleri
-### Lojistik Regresyon:
+### Data Preprocessing  
+- **Data Loading:** Loaded the CSV file and cleaned empty values in the `comment`, `film_name`, and `point` columns.  
+- **Labeling:** Categorized reviews as `positive`, `neutral`, or `negative` based on ratings.  
+- **Numerical Encoding:** Converted categorical columns (`film_name`, `sentiment`) into numerical values.  
+- **Normalization:** Normalized the `point` column to a range between 0 and 1.  
+- **Text Vectorization:** Converted comments into numerical form using TF-IDF.  
+- **Dimensionality Reduction:** Reduced the dimensionality of the TF-IDF vectors using PCA.  
+- **Feature Combination:** Combined TF-IDF vectors with numerical features for model training.
 
-- Model eğitildi ve test edildi.
-- Performans metrikleri: Accuracy, Classification Report
-### Nearest Neighbors (KNN):
+## Exploratory Data Analysis (EDA)  
+To understand the fundamental characteristics of the dataset, I analyzed:
 
-- Model eğitildi ve test edildi.
-- Performans metrikleri: Accuracy, Classification Report
-## Gözetimsiz Öğrenme Modelleri
-### K-Means:
+- Distribution of sentiment labels
+- Distribution of normalized ratings
+- Relationship between sentiment labels and normalized ratings
 
-- Model veriye uygulandı ve kümelendi.
-- Silhouette skoru hesaplandı.
-- Kümeleme sonuçları görselleştirildi.
-### DBSCAN:
+**Visualizations:**  
+- A bar chart visualizing sentiment distribution  
+- Histograms and KDE (Kernel Density Estimation) to show the distribution of ratings  
+- Scatter plots showing the relationship between normalized ratings and sentiment
 
-- Model veriye uygulandı ve kümelendi.
-- Silhouette skoru hesaplandı.
-- Kümeleme sonuçları görselleştirildi.
-### Model Seçimi ve Neden Lojistik Regresyon Daha İyi Oldu?
-### Veri Seti Özellikleri
-Proje, Türkçe film yorumlarını ve bu yorumlara bağlı puanları içeren bir veri seti kullanmaktadır. Bu veri seti, duygu analizi ve sınıflandırma problemlerinde gözetimli öğrenme algoritmalarının etkili olabileceği bir yapı sunar. Özellikle:
+## Supervised Learning Models  
+### Logistic Regression:  
+- Trained and tested the model  
+- **Performance Metrics:** Accuracy, Classification Report  
+- Achieved high accuracy of **99.3%**.
 
-- Duygu Sınıflandırması: Puanlar, yorumların duygu etiketlerine (pozitif, nötr, negatif) dönüştürülür. Bu, gözetimli öğrenme algoritmalarının etiketli verilerle eğitim yapmasını sağlar.
-- Metin Özellikleri: Yorumlar, TF-IDF gibi tekniklerle sayısal verilere dönüştürülür. Bu özellikler, Lojistik Regresyon gibi algoritmaların metin verilerini işleyip sınıflandırma yapabilmesi için uygundur.
-### Lojistik Regresyon ve Neden Daha İyi Oldu?
-Lojistik Regresyon, özellikle duygu analizi ve sınıflandırma problemlerinde neden daha etkili bir model olduğunu aşağıdaki nedenlerle açıklayabiliriz:
+### K-Nearest Neighbors (KNN):  
+- Trained and tested the model  
+- **Performance Metrics:** Accuracy, Classification Report  
+- Lower accuracy of **71.6%**, underperforming compared to Logistic Regression.
 
-#### Doğrusal Sınıflandırma:
+## Unsupervised Learning Models  
+### K-Means:  
+- Applied clustering to the data  
+- Calculated the silhouette score  
+- Visualized clustering results  
+- Achieved a silhouette score of **0.59**, indicating moderate cluster separation.
 
-Lojistik Regresyon, veri noktalarını doğrusal bir sınırla ayırır. Bu, özellikler arasındaki doğrusal ilişkileri öğrenmek için etkili bir yöntemdir. Duygu analizi gibi sınıflandırma problemlerinde, özelliklerin (örneğin, TF-IDF özellikleri) doğrusal olarak ayrılabilir olması sıkça görülür.
-#### Ayrıştırma Kapasitesi:
+### DBSCAN:  
+- Applied clustering to the data  
+- Calculated the silhouette score  
+- Visualized clustering results  
+- Achieved a higher silhouette score of **0.88**, demonstrating strong cluster separation.
 
-Lojistik Regresyon, sınıflar arasında net ayrımlar yapma kapasitesine sahiptir. Bu, veri setindeki sınıfların (pozitif, nötr, negatif) belirgin bir şekilde ayrılmasını sağlar.
-#### Sade ve Yorumlanabilir:
+## Model Selection and Why Logistic Regression Performed Better  
+### Dataset Characteristics  
+The dataset consists of Turkish movie reviews and associated ratings, providing a structure well-suited to supervised learning algorithms. Key points include:
 
-Lojistik Regresyon, modelin iç yapısını anlamayı ve yorumlamayı kolaylaştırır. Özellikle metin verileri ve duygu etiketleri gibi açıklayıcı sonuçlar sağlar.
-#### Hızlı Eğitim ve Tahmin:
+- **Sentiment Classification:** Reviews were labeled as `positive`, `neutral`, or `negative` based on ratings, enabling supervised learning algorithms to train on labeled data.  
+- **Text Features:** Reviews were transformed into numerical features using techniques like TF-IDF, making them suitable for models like Logistic Regression.
 
-Model genellikle hızlı bir şekilde eğitim alır ve tahmin yapar. Büyük veri setleriyle çalışırken bu avantaj sağlar.
-#### Aşırı Öğrenme Öncesi:
+### Why Logistic Regression Was the Best Performing Model  
+1. **Linear Classification:**  
+   Logistic Regression separates data points using a linear boundary, which is effective for datasets where features (e.g., TF-IDF) are linearly separable. In sentiment analysis, text features often have linear separability.
 
-Küçük ve orta ölçekli veri setlerinde, aşırı öğrenme riskini minimize eder. Özellikle çok sayıda özelliğin bulunduğu durumlarda düzenleme (regularization) yapabilme yeteneği sağlar.
-## Diğer Gözetimli Modellerle Karşılaştırma
-### K-Nearest Neighbors (KNN):
+2. **Clear Class Differentiation:**  
+   Logistic Regression is capable of creating clear distinctions between classes, which is essential when separating `positive`, `neutral`, and `negative` sentiments.
 
-KNN, komşuluk tabanlı bir modeldir ve genellikle daha fazla hesaplama gücü gerektirir. Büyük veri setlerinde yavaşlayabilir ve yüksek boyutlu veri setlerinde performansı düşebilir.
-### SVM ve Diğer Algoritmalar:
+3. **Simplicity and Interpretability:**  
+   The model’s internal structure is easy to understand and interpret. Logistic Regression provides transparent insights into how text features influence sentiment classification.
 
-Destek Vektör Makineleri (SVM) ve diğer karmaşık algoritmalar daha yüksek doğruluk sağlayabilir, ancak hiperparametre ayarlamaları ve eğitim süreci daha karmaşıktır. Bu proje için Lojistik Regresyon daha uygun olabilir çünkü daha hızlı ve daha basit bir model sunar.
-## Sonuç
-Veri setimizin özellikleri ve sınıflandırma probleminin doğası göz önüne alındığında, Lojistik Regresyon, özellikler arasındaki doğrusal ilişkileri öğrenme ve açıklayıcı sonuçlar sunma yeteneği nedeniyle en iyi performansı göstermiştir. Özellikle metin verileri ve duygu sınıflandırması gibi uygulamalarda, Lojistik Regresyon basitliği ve etkinliği ile öne çıkmaktadır.
+4. **Fast Training and Prediction:**  
+   Logistic Regression trains and makes predictions quickly, making it ideal for larger datasets.
 
-## Kurulum ve Kullanım:
+5. **Regularization to Prevent Overfitting:**  
+   Logistic Regression includes regularization techniques to minimize overfitting, particularly useful when dealing with datasets with many features.
 
-Gerekli kütüphaneleri yükleyin
+### Comparison with Other Supervised Models  
+- **K-Nearest Neighbors (KNN):**  
+   KNN is based on proximity, requiring more computation and often performing worse on high-dimensional data like TF-IDF vectors. The model slowed down and provided lower accuracy on this dataset.
 
-```bash
-pip install pandas numpy scikit-learn seaborn matplotlib
-```
-Proje dosyalarını indirin ve turkish_movie_sentiment_dataset.csv dosyasını veri dosyası ile aynı dizine yerleştirin.
+- **Support Vector Machines (SVM) and Others:**  
+   Although SVM and other complex models can achieve higher accuracy, they require more complex hyperparameter tuning and longer training times. Logistic Regression is a faster and simpler alternative, especially for this project.
 
-Kodları çalıştırın.
+## Results  
+Logistic Regression was chosen as the best-performing supervised model, and after hyperparameter optimization, accuracy improved to **99.6%**. Among unsupervised models, DBSCAN demonstrated superior performance with a high silhouette score, indicating strong cluster separation.
+
+## Setup and Usage Instructions
+1. Install the necessary libraries:
+   ```bash
+   pip install pandas numpy scikit-learn seaborn matplotlib
+2. Proje dosyalarını indirin ve turkish_movie_sentiment_dataset.csv dosyasını veri dosyası ile aynı dizine yerleştirin.
+3. Kodları çalıştırın.
 
