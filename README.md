@@ -99,6 +99,6 @@ Logistic Regression was chosen as the best-performing supervised model, and afte
 1. Install the necessary libraries:
    ```bash
    pip install pandas numpy scikit-learn seaborn matplotlib
-2. Proje dosyalarını indirin ve turkish_movie_sentiment_dataset.csv dosyasını veri dosyası ile aynı dizine yerleştirin.
-3. Kodları çalıştırın.
+2. Download the project files and place the turkish_movie_sentiment_dataset.csv file in the same directory as the data file.
+3. Run the codes.
 
